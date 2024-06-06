@@ -5,11 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexion {
-    //public static String url="jdbc:mysql://db4free.net:3306/legendarymotor";
     public static String url="jdbc:mysql://localhost:3306/legendary";
+    // public static String url="jdbc:mysql://localhost:3306/legendary";
     public static String Drivername="com.mysql.cj.jdbc.Driver";
-    public static String username="root";
-    public static String password="root29";
+    //public static String username="sebasccastizo27";
+     public static String username="root";
+    public static String password="Missebas27";
 
     private static Connection conexion=null;
 

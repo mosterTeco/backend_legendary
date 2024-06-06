@@ -21,6 +21,8 @@ public class App {
 
     public static void main(String[] args) {
 
+        webSocket("/chat", ChatWebSocketHandler.class);
+        
         options("/*", (request, response) -> {
 
             String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
@@ -69,6 +71,7 @@ public class App {
             String mensaje = "";
             Usuario usuario = gson.fromJson(payload, Usuario.class);
             System.out.println("usuario " + usuario.getCorreo());
+            request.session().attribute("username", usuario.getCorreo());
             boolean respuesta = DAO.usuarioRegistrado(usuario.getCorreo(), usuario.getContrasena());
 
             // JsonObject respuesta2 = new JsonObject();
@@ -151,7 +154,7 @@ public class App {
             JsonObject mensaje = new JsonObject();
             mensaje.addProperty("respuesta", respuesta);
             return mensaje;
-        });
+        }); 
 
     }
 }
